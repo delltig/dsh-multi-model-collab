@@ -77,7 +77,11 @@ function indexEntries() {
     const tab = row.indexOf('\t')
     const meta = row.slice(0, tab).split(' ')
     const path = row.slice(tab + 1)
-    return { mode: meta[0], path, bytes: readFileSync(join(ROOT, path)) }
+    // Read the bytes stored in the INDEX, not the working tree: git normalizes
+    // line endings on commit, so the two can differ and the uploaded tree would
+    // then hash differently from the committed one.
+    const bytes = execFileSync('git', ['cat-file', 'blob', meta[1]], { cwd: ROOT, maxBuffer: 64 * 1024 * 1024 })
+    return { mode: meta[0], path, bytes, blobSha: meta[1] }
   })
 }
 
@@ -168,9 +172,13 @@ async function main() {
     const created = await api('POST', `/repos/${REMOTE_OWNER}/${REMOTE_REPO}/git/trees`, { tree })
     if (!created.ok) throw new Error(`tree failed (${created.status}): ${JSON.stringify(created.body)}`)
     treeSha = created.body.sha
-    console.log(`  tree ${treeSha.slice(0, 7)}`)
+    const localTree = git(['write-tree'])
+    if (treeSha === localTree) {
+      console.log(`  tree ${treeSha.slice(0, 7)} — byte-identical to the local index`)
+    } else {
+      console.log(`  tree ${treeSha.slice(0, 7)} — WARNING differs from the local index ${localTree.slice(0, 7)}`)
+    }
   }
-
   console.log('▸ creating the commit')
   let commitSha
   if (dryRun) {
