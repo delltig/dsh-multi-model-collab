@@ -1,0 +1,4 @@
+# FORM A2 (probe): absolute path to the plugin DIRECTORY.
+- insert:
+    - id: hello-bundle-absdir
+      name: D:\deepseek harness\任务13_多模型插件\verify\hello-bundle

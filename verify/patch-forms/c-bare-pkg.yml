@@ -1,0 +1,6 @@
+# NEGATIVE probe: bare package name. Resolves only from a bundle installed into
+# the profile (dsh plugin add) or a package reachable from the installation
+# anchor — never from this workspace directory.
+- insert:
+    - id: hello-bundle-pkg
+      name: dsh-hello-bundle

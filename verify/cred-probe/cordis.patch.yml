@@ -1,0 +1,3 @@
+- insert:
+    - id: cred-probe
+      name: ./index.js

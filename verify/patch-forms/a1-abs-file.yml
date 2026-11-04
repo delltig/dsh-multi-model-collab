@@ -1,0 +1,5 @@
+# FORM A1 (probe): ABSOLUTE Windows path straight to the entry file.
+# anchorInsertedPluginNames() converts it to a file:// URL (isAbsolute branch).
+- insert:
+    - id: hello-bundle-absfile
+      name: D:\deepseek harness\任务13_多模型插件\verify\hello-bundle\index.js

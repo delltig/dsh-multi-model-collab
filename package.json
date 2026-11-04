@@ -1,0 +1,72 @@
+{
+  "name": "dsh-multi-model-collab",
+  "version": "0.1.0",
+  "description": "DeepSeek Harness 插件：注册 multi_model_run 工具，让同一个任务同时交给多个大模型协作执行（并行对比 或 主模型+副模型验证），并按策略聚合结果。Registers a multi_model_run tool that fans one task out to several configured models in parallel or primary/secondary mode, then aggregates the answers.",
+  "type": "module",
+  "main": "lib/index.js",
+  "icon": "assets/icon.png",
+  "author": "applestore",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/delltig/dsh-multi-model-collab.git"
+  },
+  "homepage": "https://github.com/delltig/dsh-multi-model-collab#readme",
+  "bugs": {
+    "url": "https://github.com/delltig/dsh-multi-model-collab/issues"
+  },
+  "exports": {
+    ".": {
+      "default": "./lib/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "src",
+    "assets",
+    "cordis.patch.yml",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "compatibility": {
+      "dsh": ">=0.2.0-rc.1 <0.3.0-0"
+    }
+  },
+  "keywords": [
+    "deepseek",
+    "deepseek-harness",
+    "dsh",
+    "dsh-plugin",
+    "cordis",
+    "multi-model",
+    "orchestration",
+    "llm"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc -p tsconfig.json && node --check lib/index.js",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "node test/run.mjs",
+    "e2e": "node scripts/e2e.mjs",
+    "publish:github": "node scripts/publish-to-github.mjs",
+    "publish:market": "node scripts/open-market-pr.mjs",
+    "icon": "python scripts/make-icon.py assets/icon.png",
+    "prepack": "npm run build"
+  },
+  "devDependencies": {
+    "@deepseek-ai/cordis": "4.0.5",
+    "@deepseek-ai/dsh-llm": "0.2.1-rc.3",
+    "@deepseek-ai/dsh-tools": "0.2.1-rc.3",
+    "@deepseek-ai/schemastery": "3.18.5",
+    "@types/node": "24.19.2",
+    "typescript": "5.9.3"
+  }
+}

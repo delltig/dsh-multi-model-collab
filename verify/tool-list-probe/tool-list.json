@@ -1,0 +1,253 @@
+{
+  "at": "2026-10-25T12:23:31.041Z",
+  "schemas": [
+    {
+      "name": "job_output",
+      "descriptionLength": 116,
+      "parameterKeys": [
+        "job_id",
+        "wait",
+        "timeout_ms"
+      ]
+    },
+    {
+      "name": "job_list",
+      "descriptionLength": 85,
+      "parameterKeys": []
+    },
+    {
+      "name": "job_kill",
+      "descriptionLength": 49,
+      "parameterKeys": [
+        "job_id",
+        "reason"
+      ]
+    },
+    {
+      "name": "web_search",
+      "descriptionLength": 101,
+      "parameterKeys": [
+        "queries"
+      ]
+    },
+    {
+      "name": "web_fetch",
+      "descriptionLength": 74,
+      "parameterKeys": [
+        "url"
+      ]
+    },
+    {
+      "name": "import_probe",
+      "descriptionLength": 45,
+      "parameterKeys": []
+    },
+    {
+      "name": "todo_write",
+      "descriptionLength": 317,
+      "parameterKeys": [
+        "todos"
+      ]
+    },
+    {
+      "name": "exit_plan_mode",
+      "descriptionLength": 250,
+      "parameterKeys": [
+        "plan"
+      ]
+    },
+    {
+      "name": "get_goal",
+      "descriptionLength": 87,
+      "parameterKeys": []
+    },
+    {
+      "name": "create_goal",
+      "descriptionLength": 222,
+      "parameterKeys": [
+        "objective",
+        "max_goal_rounds"
+      ]
+    },
+    {
+      "name": "update_goal",
+      "descriptionLength": 24,
+      "parameterKeys": [
+        "goal_id",
+        "revision",
+        "action",
+        "objective",
+        "max_goal_rounds",
+        "blocked_reason"
+      ]
+    },
+    {
+      "name": "working_directory",
+      "descriptionLength": 165,
+      "parameterKeys": [
+        "cd"
+      ]
+    },
+    {
+      "name": "read",
+      "descriptionLength": 56,
+      "parameterKeys": [
+        "file_path",
+        "offset",
+        "limit"
+      ]
+    },
+    {
+      "name": "write",
+      "descriptionLength": 42,
+      "parameterKeys": [
+        "file_path",
+        "content",
+        "sandbox_permissions",
+        "justification"
+      ]
+    },
+    {
+      "name": "edit",
+      "descriptionLength": 59,
+      "parameterKeys": [
+        "file_path",
+        "old_string",
+        "new_string",
+        "replace_all",
+        "sandbox_permissions",
+        "justification"
+      ]
+    },
+    {
+      "name": "glob",
+      "descriptionLength": 235,
+      "parameterKeys": [
+        "pattern",
+        "path"
+      ]
+    },
+    {
+      "name": "grep",
+      "descriptionLength": 206,
+      "parameterKeys": [
+        "pattern",
+        "path",
+        "include"
+      ]
+    },
+    {
+      "name": "skill",
+      "descriptionLength": 139,
+      "parameterKeys": [
+        "name"
+      ]
+    },
+    {
+      "name": "pwsh",
+      "descriptionLength": 2007,
+      "parameterKeys": [
+        "description",
+        "command",
+        "timeoutMs",
+        "workdir",
+        "run_in_background",
+        "sandbox_permissions",
+        "justification"
+      ]
+    },
+    {
+      "name": "read_image",
+      "descriptionLength": 174,
+      "parameterKeys": [
+        "file_path"
+      ]
+    },
+    {
+      "name": "send_message",
+      "descriptionLength": 169,
+      "parameterKeys": [
+        "agent_id",
+        "message"
+      ]
+    },
+    {
+      "name": "interrupt_agent",
+      "descriptionLength": 276,
+      "parameterKeys": [
+        "agent_id"
+      ]
+    },
+    {
+      "name": "list_agents",
+      "descriptionLength": 276,
+      "parameterKeys": [
+        "scope"
+      ]
+    },
+    {
+      "name": "subagent",
+      "descriptionLength": 560,
+      "parameterKeys": [
+        "cwd",
+        "description",
+        "prompt"
+      ]
+    },
+    {
+      "name": "subagent_fork",
+      "descriptionLength": 661,
+      "parameterKeys": [
+        "cwd",
+        "description",
+        "prompt"
+      ]
+    },
+    {
+      "name": "list_mcp_resources",
+      "descriptionLength": 44,
+      "parameterKeys": [
+        "server",
+        "cursor"
+      ]
+    },
+    {
+      "name": "list_mcp_resource_templates",
+      "descriptionLength": 61,
+      "parameterKeys": [
+        "server",
+        "cursor"
+      ]
+    },
+    {
+      "name": "read_mcp_resource",
+      "descriptionLength": 101,
+      "parameterKeys": [
+        "server",
+        "uri"
+      ]
+    },
+    {
+      "name": "workflow",
+      "descriptionLength": 1667,
+      "parameterKeys": [
+        "script",
+        "meta",
+        "args",
+        "run_in_background"
+      ]
+    }
+  ],
+  "hasHelloProbe": false,
+  "llmService": true,
+  "providers": [
+    {
+      "id": "deepseek-official",
+      "name": "DeepSeek"
+    },
+    {
+      "id": "deepseek-account",
+      "name": "DeepSeek Account"
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+# dsh-multi-model-collab — bundle patch layer.
+#
+# This is both
+#   * the `dsh.bundle.patch` layer of this npm package (applied when the package
+#     is installed into a profile), and
+#   * a standalone overlay for `dsh <app> --patch ./cordis.patch.yml`.
+#
+# The inserted row's relative `name` is anchored BESIDE THIS FILE, so `./lib/index.js`
+# resolves to this very package's entry point in either flow and no profile
+# installation step is required for a `--patch` smoke test.
+#
+# Every key under `config:` is the plugin's own Loader schema
+# (`Config` in src/index.ts). Change a value here to change behaviour; no code
+# change is needed. Delete a key to fall back to the schema default.
+
+- insert:
+    - id: multi-model-collab
+      name: ./lib/index.js
+      config:
+        # Default model set used when the tool call omits `models`.
+        # Each entry is "<provider>/<model>" from `ctx.llm.listProviders()`.
+        # The FIRST entry is the primary model in `primary_secondary` mode.
+        # Same provider with different models is fine; cross-provider also works.
+        models:
+          - deepseek-official/deepseek-flash
+          - deepseek-official/deepseek-v4-pro
+
+        # parallel           every model answers the task independently, at once
+        # primary_secondary  the first model drafts; the rest critique and complete it
+        mode: parallel
+
+        # all      return every model's answer verbatim
+        # vote     normalized majority answer (falls back to the longest on a tie)
+        # longest  return the longest surviving answer
+        aggregate: all
+
+        # Provider used for a model id written without a "<provider>/" prefix.
+        # Empty means "look the id up in every configured provider catalogue".
+        defaultProvider: ''
+
+        # System prompt shared by every model. Empty sends none.
+        system: ''
+
+        # Sampling temperature; a negative value sends no temperature at all.
+        temperature: -1
+
+        # Output-token cap per model call; 0 sends no cap (adapter default applies).
+        maxTokens: 0
+
+        # Cancellation budget for ONE model call.
+        perModelTimeoutMs: 180000
+
+        # Cooperative budget for the WHOLE tool call; 0 keeps the registry default.
+        toolTimeoutMs: 900000
+
+        # How many model calls may be in flight at once.
+        maxConcurrency: 4
+
+        # Clip each returned answer to this many characters; 0 returns them in full.
+        # The untruncated length is still reported per result in `chars`.
+        clipChars: 12000
+
+        # Include per-model token usage when the adapter reports it.
+        includeUsage: true
+
+        # What secondary models are asked to do with the primary draft.
+        secondaryInstruction: >-
+          审阅上面这份草稿：指出其中事实性错误、遗漏或推理跳跃，然后给出你修正后的完整最终答案。
+          如果草稿已经完全正确，请明确说明“同意”，并补充任何它遗漏的关键信息。
+          Review the draft above for factual errors, omissions, or weak reasoning, then give your corrected complete final answer.

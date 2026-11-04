@@ -1,0 +1,19 @@
+# dependencies
+node_modules/
+
+# build / packaging artifacts
+*.tgz
+*.dshpack.zip
+
+# local scratch and research extractions (regenerate with tools/README.md)
+tools/ref/
+verify/ref/
+
+# large captured evidence that does not need to live in git
+verify/evidence/asar-entries.txt
+verify/web-ui/transcript-dom.html
+verify/**/*.log
+
+# OS / editor noise
+.DS_Store
+Thumbs.db

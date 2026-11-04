@@ -1,0 +1,42 @@
+Call the multi_model_run tool exactly once with task='Reply with exactly the single word PONG and nothing else.' and print the tool result verbatim.
+20:40
+已完成
+已完成，用时 21秒
+
+Tool result, verbatim:
+
+代码块
+## multi_model_run — parallel / all
+
+**task**: Reply with exactly the single word PONG and nothing else.
+
+**models**: deepseek-official/deepseek-flash, deepseek-official/deepseek-v4-pro — 2 succeeded, 0 failed
+
+### deepseek-official/deepseek-flash — ok (708ms, 4 chars)
+
+PONG
+
+### deepseek-official/deepseek-v4-pro — ok (1506ms, 4 chars)
+
+PONG
+
+## aggregate
+
+```text
+mode=parallel aggregate=all models=2 ok=2 failed=0 elapsed=1507ms
+- OK   deepseek-official/deepseek-flash [peer] 4 chars, 708ms, tokens 42→10
+- OK   deepseek-official/deepseek-v4-pro [peer] 4 chars, 1506ms, tokens 95→19
+- pick: none — aggregate=all returns every answer verbatim
+代码块
+
+Both configured models returned exactly `PONG`.
+用量 509K tok
+20:40
+发消息或创建任务, / 调用指令, @ 文件或对话
+工作区内修改
+DeepSeek-V4.1-Flash
+1017
+High
+1 轮 2 步·232 tok/s
+509K tok·缓存命中 99.9%
+25%

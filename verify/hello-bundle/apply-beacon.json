@@ -1,0 +1,8 @@
+{
+  "at": "2026-10-25T12:26:41.202Z",
+  "plugin": "dsh-hello-bundle",
+  "tool": "hello_probe",
+  "sentinel": "HELLO_FROM_PATCH_BUNDLE_9f3c2",
+  "pid": 12572,
+  "cwd": "D:\\deepseek harness\\任务13_多模型插件"
+}

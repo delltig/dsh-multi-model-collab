@@ -1,0 +1,53 @@
+{
+  "at": "2026-10-25T12:17:49.933Z",
+  "ref": "DEEPSEEK_API_KEY",
+  "hasService": true,
+  "methods": [
+    "isClosed",
+    "inherited",
+    "dotenvFallback",
+    "resolve",
+    "describe",
+    "set",
+    "unset",
+    "readRecord",
+    "describeRecord",
+    "listRecords",
+    "modifyRecord",
+    "deleteRecord",
+    "enqueue",
+    "queueRefresh",
+    "write",
+    "loadInitial",
+    "migrateFlatDocument",
+    "refresh",
+    "reconcileFromDisk",
+    "warnIgnoredKeys",
+    "changedRefs",
+    "changedRecords"
+  ],
+  "describe": {
+    "configured": true,
+    "source": "file",
+    "writable": true
+  },
+  "resolve": {
+    "source": "file",
+    "valueType": "string",
+    "valueLength": 35
+  },
+  "records": [
+    {
+      "key": "client-connection/browser-session",
+      "kind": "grant"
+    },
+    {
+      "key": "deepseek-account-platform/device",
+      "kind": "grant"
+    },
+    {
+      "key": "deepseek-account-platform/default",
+      "kind": "grant"
+    }
+  ]
+}

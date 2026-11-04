@@ -1,0 +1,5 @@
+# FORM B1 (probe): relative path anchored beside THIS patch file,
+# climbing into the bundle directory. Tests the `./`/`../` branch.
+- insert:
+    - id: hello-bundle-reldot
+      name: ../hello-bundle/index.js

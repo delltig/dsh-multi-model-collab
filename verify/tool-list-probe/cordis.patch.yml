@@ -1,0 +1,3 @@
+- insert:
+    - id: tool-list-probe
+      name: ./index.js

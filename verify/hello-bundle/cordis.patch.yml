@@ -1,0 +1,9 @@
+# Bundle patch layer for dsh-hello-bundle.
+# The insert row's relative name is anchored BESIDE THIS FILE
+# (see anchorInsertedPluginNames in @deepseek-ai/dsh-app-boot), so
+# `./index.js` becomes file:///<...>/verify/hello-bundle/index.js
+# whether this layer is applied as a profile bundle patch or as a
+# `dsh --patch <this file>` overlay.
+- insert:
+    - id: hello-bundle
+      name: ./index.js

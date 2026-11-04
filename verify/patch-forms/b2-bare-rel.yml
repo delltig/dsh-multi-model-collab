@@ -1,0 +1,6 @@
+# NEGATIVE probe: relative path WITHOUT a leading ./ or ../.
+# anchorInsertedPluginNames() only rewrites absolute / "./" / "../" names, so
+# this stays a bare package specifier and cannot resolve from the workspace.
+- insert:
+    - id: hello-bundle-barerel
+      name: hello-bundle/index.js
